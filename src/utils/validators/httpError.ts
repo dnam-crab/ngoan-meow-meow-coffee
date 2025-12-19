@@ -1,6 +1,6 @@
 import { isAxiosError } from "axios";
 import type { TFunction } from "i18next";
-import type { ApiErrorBody } from "../services/auth/http";
+import type { ApiErrorBody } from "../../services/http";
 
 export function getHttpErrorMessage(err: unknown, t: TFunction): string {
   if (!isAxiosError<ApiErrorBody>(err)) return t("errors.unknown");
