@@ -1,7 +1,16 @@
-import axios from "axios";
+import axios, { AxiosError, type AxiosInstance } from "axios";
 
-export const http = axios.create({
-  baseURL: import.meta.env.VITE_API_URL, // ví dụ http://localhost:4000
-  withCredentials: true, // quan trọng cho cookie HttpOnly
-  headers: { "Content-Type": "application/json" },
+export type ApiErrorBody = {
+  message?: string;
+};
+
+export const http: AxiosInstance = axios.create({
+  baseURL: import.meta.env.VITE_API_BASE_URL,
+  withCredentials: true, // sau này dùng cookie/session
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
+
+// (optional) export type để dùng chỗ khác
+export type ApiAxiosError = AxiosError<ApiErrorBody>;
