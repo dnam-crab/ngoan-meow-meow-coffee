@@ -1,5 +1,6 @@
 import { AppShell, Button, Group } from "@mantine/core";
 import { Outlet, Link } from "react-router-dom";
+// import logo from "@/assets/logos/logo.svg";
 
 export default function AppLayout() {
   return (

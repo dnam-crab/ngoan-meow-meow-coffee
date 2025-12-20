@@ -1,9 +1,10 @@
 import React from "react";
-import type { RouteObject } from "react-router-dom"
+import type { RouteObject } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 
-import AppLayout from "@/layouts/AppLayout";               // layout có Header + Outlet
-import DashboardLayout from "@/layouts/DashboardLayout";   // layout dashboard (sidebar + Outlet)
+import LandingLayout from '@/layouts/LandingLayout'; // layout có Header Landing + Outlet
+// import AppLayout from "@/layouts/AppLayout"; // layout có Header + Outlet
+import DashboardLayout from "@/layouts/DashboardLayout"; // layout dashboard (sidebar + Outlet)
 
 import LandingPage from "@/pages/LandingPage/LandingPage";
 import LoginPage from "@/pages/Login/LoginPage";
@@ -14,28 +15,19 @@ import AuthGuard from "@/components/guards/AuthGuard";
 import DashboardPage from "@/pages/Dashboard/DashboardPage";
 
 export const routes: RouteObject[] = [
-  /**
-   * PUBLIC AREA (Landing + Login)
-   */
   {
     path: "/",
-    element: <AppLayout />,
-    children: [
-      { index: true, element: <LandingPage /> },
-      {
-        path: "login",
-        element: (
-          <GuestGuard>
-            <LoginPage />
-          </GuestGuard>
-        ),
-      },
-    ],
+    element: <LandingLayout />, // ✅ có Header Landing
+    children: [{ index: true, element: <LandingPage /> }],
   },
-
-  /**
-   * ADMIN AREA (Dashboard)
-   */
+  {
+    path: "/login",
+    element: (
+      <GuestGuard>
+        <LoginPage />
+      </GuestGuard>
+    ),
+  },
   {
     path: "/dashboard",
     element: (
@@ -43,14 +35,8 @@ export const routes: RouteObject[] = [
         <DashboardLayout />
       </AuthGuard>
     ),
-    children: [
-      { index: true, element: <DashboardPage /> },
-      // sau này thêm:
-      // { path: "bookings", element: <BookingsPage /> },
-      // { path: "cats", element: <CatsPage /> },
-    ],
+    children: [{ index: true, element: <DashboardPage /> }],
   },
-
   /**
    * FALLBACK
    */
