@@ -3,11 +3,15 @@ import { me } from "../services/auth";
 
 export const AUTH_ME_QUERY_KEY = ["auth", "me"];
 
-export function useAuthMe() {
+export function useAuth() {
   return useQuery({
     queryKey: AUTH_ME_QUERY_KEY,
     queryFn: me,
     retry: false,         
     staleTime: 5 * 60 * 1000, // 5 phút
+
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+    refetchOnMount: false,
   });
 }

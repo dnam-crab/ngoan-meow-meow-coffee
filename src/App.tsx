@@ -1,33 +1,8 @@
-import { Routes, Route, Navigate } from "react-router-dom";
-
-import LoginPage from "./pages/Login/LoginPage";
-import DashboardPage from "./pages/Dashboard/DashboardPage";
-
-import AuthGuard from "./components/AuthGuard";
-import GuestGuard from "./components/GuestGuard";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { routes } from "@/routes";
 
 export default function App() {
-  return (
-    <Routes>
-      <Route
-        path="/login"
-        element={
-          <GuestGuard>
-            <LoginPage />
-          </GuestGuard>
-        }
-      />
+  const router = createBrowserRouter(routes);
 
-      <Route
-        path="/dashboard"
-        element={
-          <AuthGuard>
-            <DashboardPage />
-          </AuthGuard>
-        }
-      />
-
-      <Route path="/" element={<Navigate to="/dashboard" replace />} />
-    </Routes>
-  );
+  return <RouterProvider router={router} />;
 }
