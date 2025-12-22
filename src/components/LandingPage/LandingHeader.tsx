@@ -28,6 +28,7 @@ export default function LandingHeader() {
             Account
           </Button>
         </Menu.Target>
+        <div className="bg-red-500 text-white p-4">Test</div>
 
         <Menu.Dropdown>
           {!user && (
