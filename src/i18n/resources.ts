@@ -1,4 +1,4 @@
-import viCommon from "../locales/vi/common.";
+import viCommon from "../locales/vi/common";
 import enCommon from "../locales/en/common";
 
 export const resources = {

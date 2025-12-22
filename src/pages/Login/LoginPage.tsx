@@ -10,6 +10,7 @@ import { getHttpErrorMessage } from "../../utils/validators/httpError";
 import { validateEmail, validatePassword } from "../../utils/validators/auth"; // theo kiểu mày đang dùng t truyền vào
 import { useQueryClient } from "@tanstack/react-query";
 import { AUTH_ME_QUERY_KEY } from "../../hooks/useAuth";
+import { mapAxiosErrorToI18n } from "@/utils/i18n/httpErrorI18n";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export default function LoginPage() {
@@ -32,9 +33,11 @@ export default function LoginPage() {
       navigate("/dashboard", { replace: true });
     },
     onError: (err: unknown) => {
+      const { key, fallbackMessage } = mapAxiosErrorToI18n(err);
       notifications.show({
         title: t("errors.title"),
-        message: getHttpErrorMessage(err, t),
+        message: fallbackMessage ?? t(key),
+        color: "red",
       });
     },
   });
