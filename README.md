@@ -64,24 +64,30 @@ VITE_API_BASE_URL=http://localhost:3001
 Install dependencies:
 
 ```bash
-npm install
+pnpm install
+pnpm dev
 ```
 
 Run development server:
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 Application will be available at: `http://localhost:5173`
 
 ## Build for Production
 ```bash
-npm run build
+pnpm run build
 ```
 
 Preview production build:
 ```bash
-npm run preview
+pnpm run preview
+```
+
+If you don't have pnpm:
+```bash
+npm install -g pnpm
 ```
 
 ## Backend Integration
