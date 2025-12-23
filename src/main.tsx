@@ -7,9 +7,10 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import App from "./App";
 import "./i18n";
 
+import "@/styles/reset.css";
 import "@mantine/core/styles.css";
-import "@mantine/notifications/styles.css";
 import "./styles/tailwind.css";
+import "@mantine/notifications/styles.css";
 import "./styles/main.scss";
 
 const queryClient = new QueryClient();

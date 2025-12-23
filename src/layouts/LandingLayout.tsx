@@ -5,7 +5,17 @@ import LandingHeader from "@/components/LandingPage/LandingHeader";
 
 export default function LandingLayout() {
   return (
-    <AppShell header={{ height: 60 }} padding="md">
+    <AppShell
+      header={{
+        height: 60,
+        offset: false,
+      }}
+      padding={0}
+      styles={{
+        header: { backgroundColor: "transparent", borderBottom: "none" },
+        main: { padding: 0 },
+      }}
+    >
       <AppShell.Header>
         <LandingHeader />
       </AppShell.Header>

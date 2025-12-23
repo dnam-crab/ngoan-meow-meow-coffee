@@ -1,6 +1,11 @@
 import { Group, Button, Menu, Text } from "@mantine/core";
 import { Link, useNavigate } from "react-router-dom";
-import { IconChevronDown, IconDashboard, IconLogin, IconLogout } from "@tabler/icons-react";
+import {
+  IconChevronDown,
+  IconDashboard,
+  IconLogin,
+  IconLogout,
+} from "@tabler/icons-react";
 import { useAuth } from "@/hooks/useAuth";
 import { useLogout } from "@/hooks/useLogout";
 
@@ -28,8 +33,6 @@ export default function LandingHeader() {
             Account
           </Button>
         </Menu.Target>
-        <div className="bg-red-500 text-white p-4">Test</div>
-
         <Menu.Dropdown>
           {!user && (
             <Menu.Item
