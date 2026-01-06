@@ -1,12 +1,13 @@
+import React from "react";
 import { Navigate, useLocation } from "react-router-dom";
-import { Center, Loader } from "@mantine/core";
+import { Box, CircularProgress } from "@mui/material";
 import { useAuth } from "@/hooks/useAuth";
 
 export type Role = "ADMIN" | "USER";
 
 type Props = {
   children: React.ReactNode;
-  allow?: Role[]; // ✅ thêm cái này
+  allow?: Role[];
 };
 
 export default function AuthGuard({ children, allow }: Props) {
@@ -15,18 +16,22 @@ export default function AuthGuard({ children, allow }: Props) {
 
   if (isPending) {
     return (
-      <Center h="100vh">
-        <Loader />
-      </Center>
+      <Box
+        sx={{
+          height: "100vh",
+          display: "grid",
+          placeItems: "center",
+        }}
+      >
+        <CircularProgress />
+      </Box>
     );
   }
 
-  // chưa login => về login
   if (!data?.user) {
     return <Navigate to="/login" replace state={{ from: location.pathname }} />;
   }
 
-  // có allow => check role
   if (allow && allow.length > 0) {
     const role = data.user.role as Role;
     if (!allow.includes(role)) return <Navigate to="/" replace />;

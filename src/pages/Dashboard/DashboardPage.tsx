@@ -1,8 +1,8 @@
-import { Button } from "@mantine/core";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { logout } from "../../services/auth";
 import { AUTH_ME_QUERY_KEY } from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
 
 export default function DashboardPage() {
   const qc = useQueryClient();

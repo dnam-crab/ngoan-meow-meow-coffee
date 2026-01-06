@@ -1,12 +1,16 @@
-import { AppShell } from "@mantine/core";
+import { Box } from "@mui/material";
 import { Outlet } from "react-router-dom";
 
 export default function DashboardLayout() {
   return (
-    <AppShell padding="md">
-      <AppShell.Main>
-        <Outlet />
-      </AppShell.Main>
-    </AppShell>
+    <Box
+      sx={{
+        minHeight: "100vh",
+        padding: 2, // tương đương padding="md"
+        backgroundColor: "#f5f5f5",
+      }}
+    >
+      <Outlet />
+    </Box>
   );
 }

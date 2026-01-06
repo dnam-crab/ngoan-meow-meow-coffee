@@ -1,28 +1,33 @@
-import { AppShell } from "@mantine/core";
 import { Outlet } from "react-router-dom";
+import { AppBar, Toolbar, Box } from "@mui/material";
 import LandingHeader from "@/components/LandingPage/LandingHeader";
 // import logo from "@/assets/logos/logo.svg";
 
 export default function LandingLayout() {
-  return (
-    <AppShell
-      header={{
-        height: 60,
-        offset: false,
-      }}
-      padding={0}
-      styles={{
-        header: { backgroundColor: "transparent", borderBottom: "none" },
-        main: { padding: 0 },
-      }}
-    >
-      <AppShell.Header>
-        <LandingHeader />
-      </AppShell.Header>
+  const HEADER_H = 60;
 
-      <AppShell.Main>
+  return (
+    <Box sx={{ minHeight: "100vh" }}>
+      {/* Header overlay */}
+      <AppBar
+        position="fixed"
+        elevation={0}
+        sx={{
+          height: HEADER_H,
+          justifyContent: "center",
+          backgroundColor: "transparent",
+          borderBottom: "none",
+        }}
+      >
+        <Toolbar sx={{ minHeight: HEADER_H }}>
+          <LandingHeader />
+        </Toolbar>
+      </AppBar>
+
+      {/* Main starts from top (background full-bleed) */}
+      <Box component="main" sx={{ minHeight: "100vh" }}>
         <Outlet />
-      </AppShell.Main>
-    </AppShell>
+      </Box>
+    </Box>
   );
 }
