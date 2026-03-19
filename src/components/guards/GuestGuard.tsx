@@ -9,10 +9,7 @@ export default function GuestGuard({ children }: Props) {
   const { data, isPending } = useAuth();
 
   if (isPending) {
-    return (
-      <div loading h="100vh">
-      </div>
-    );
+    return <div style={{ height: "100vh" }}></div>;
   }
 
   if (data?.user) {
